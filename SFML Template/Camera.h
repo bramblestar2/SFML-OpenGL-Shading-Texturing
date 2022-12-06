@@ -26,7 +26,6 @@ public:
 	Camera(const sf::Vector2f _Size = sf::Vector2f(), const sf::Vector3f _Cam_Position = sf::Vector3f());
 	~Camera();
 
-	void setClearDepth(const float _Depth);
 	void enableDepth();
 
 	float getYaw() const { return yaw; }
