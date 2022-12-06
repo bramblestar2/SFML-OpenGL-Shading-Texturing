@@ -31,6 +31,9 @@ public:
 	float getYaw() const { return yaw; }
 	float getPitch() const { return pitch; }
 	float getMouseSensitivity() const { return mouseSensitivity; }
+	glm::mat4* getViewPtr(); //for shaders
+	glm::mat4* getProjectionPtr(); //for shaders
+	glm::mat4* getModelPtr(); //for shaders
 	glm::vec3 getCameraPosition() const { return cameraPos; }
 
 	void setSize(const float _X, const float _Y);
@@ -38,6 +41,7 @@ public:
 	void setMouseSensitivity(const float _Sensitivity) { mouseSensitivity = _Sensitivity; }
 	void setLastMouse(const sf::Vector2f _Last);
 	
+	void setFOV(const float _FOV);
 	void setViewDistance(const float _Near, const float _Far);
 	void setCameraSpeed(const float _Speed) { cameraSpeed = _Speed; }
 	void setCameraPosition(const sf::Vector3f _Position);
@@ -48,6 +52,7 @@ public:
 	void move(const sf::Vector3f _Direction);
 
 	void update(const double _DT);
+	void updateMatrix(); //Updates sfml's matrix
 	void updateMouseMovement(sf::Window* window, const double _DT);
 	void updateMovement(const double _DT);
 
@@ -62,6 +67,8 @@ private:
 
 	//Camera
 	glm::mat4 view;
+	glm::mat4 projection;
+	glm::mat4 model;
 	
 	glm::vec3 cameraPos;
 	glm::vec3 cameraTarget;
@@ -71,6 +78,7 @@ private:
 	glm::vec3 cameraUp;
 
 	float cameraSpeed;
+	float fov;
 	//
 
 	//Mouse looking

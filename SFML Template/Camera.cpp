@@ -11,6 +11,7 @@ Camera::Camera(const sf::Vector2f _Size, const sf::Vector3f _Pos)
 	firstMouse = true;
 
 	view = glm::mat4(1.f);
+	model = glm::mat4(1.f);
 
 	cameraPos = glm::vec3(_Pos.x, _Pos.y, _Pos.z);
 	cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -31,6 +32,11 @@ void Camera::enableDepth()
 {
 	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
+}
+
+void Camera::setFOV(const float _FOV)
+{
+	fov = _FOV;
 }
 
 void Camera::setViewDistance(const float _Near, const float _Far)
@@ -56,6 +62,11 @@ void Camera::update(const double _DT)
 {
 	view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 
+	projection = glm::perspective(glm::radians(fov), cameraSize.x / cameraSize.y, viewDistance.x, cameraSize.y);
+}
+
+void Camera::updateMatrix()
+{
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glMultMatrixf(glm::value_ptr(view));
@@ -123,6 +134,21 @@ void Camera::updateMovement(const double _DT)
 		cameraPos.y += camSpeed;
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
 		cameraPos.y -= camSpeed;
+}
+
+glm::mat4* Camera::getViewPtr()
+{
+	return &view;
+}
+
+glm::mat4* Camera::getProjectionPtr()
+{
+	return &projection;
+}
+
+glm::mat4* Camera::getModelPtr()
+{
+	return &model;
 }
 
 void Camera::setSize(const float _X, const float _Y)

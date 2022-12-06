@@ -57,4 +57,12 @@
       <Filter>Header Files\Windows</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="test.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="test.fs">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

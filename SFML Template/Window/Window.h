@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
+#include <SFML/Graphics/Shader.hpp>
 #include "../Camera.h"
 
 class Window
@@ -25,6 +26,7 @@ private:
 	sf::Event event;
 
 	Camera c1;
+	sf::Shader shader;
 
 	bool cameraPaused;
 };

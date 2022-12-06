@@ -148,6 +148,10 @@
     <ClInclude Include="View.h" />
     <ClInclude Include="Window\Window.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="test.fs" />
+    <None Include="test.vs" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
