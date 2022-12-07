@@ -28,6 +28,7 @@ public:
 
 	void enableDepth();
 
+	float getFOV() const { return fov; }
 	float getYaw() const { return yaw; }
 	float getPitch() const { return pitch; }
 	float getMouseSensitivity() const { return mouseSensitivity; }

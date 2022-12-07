@@ -19,7 +19,7 @@ public:
 private:
 	void initWindow();
 	
-	sf::Clock dtClock;
+	sf::Clock dtClock, timeClock;
 	double dt;
 
 	sf::Window* window;

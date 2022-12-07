@@ -4,7 +4,7 @@ Window::Window()
 {
 	initWindow();
 
-	c1 = Camera(sf::Vector2f(window->getSize()), sf::Vector3f(0, 0, 3));
+	c1 = Camera(sf::Vector2f(window->getSize()), sf::Vector3f(-100, 0, 0));
 
 	cameraPaused = false;
 
@@ -17,6 +17,7 @@ Window::Window()
 	glDisable(GL_LIGHTING);
 
 	shader.loadFromFile("test.vs", "test.fs");
+	//shader.loadFromFile("shader.vert", "shader.frag");
 
 	//shader.setParameter("view", c1.getMatrixPtr());
 
@@ -96,9 +97,8 @@ void Window::render()
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	
 	glDrawArrays(GL_QUADS, 0, 24);
-	shader.setUniform("ourColor", sf::Glsl::Vec4(255,255,255,255));
 	
-	//shader.setUniform("texture", sf::Shader::CurrentTexture);
+	shader.setUniform("ourColor", sf::Glsl::Vec4(0,255,255,255));
 
 	window->display();
 }
@@ -143,6 +143,10 @@ void Window::updateSFMLEvents()
 			break;
 
 		case sf::Event::MouseMoved:
+			break;
+
+		case sf::Event::MouseWheelMoved:
+			c1.setFOV(c1.getFOV() + event.mouseWheelScroll.wheel);
 			break;
 		}
 	}

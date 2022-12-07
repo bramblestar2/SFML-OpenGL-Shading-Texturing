@@ -150,6 +150,8 @@
     <ClInclude Include="Window\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shader.frag" />
+    <None Include="shader.vert" />
     <None Include="test.fs" />
     <None Include="test.vs" />
   </ItemGroup>
